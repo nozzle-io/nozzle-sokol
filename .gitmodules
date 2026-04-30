@@ -1,0 +1,6 @@
+[submodule "nozzle"]
+	path = nozzle
+	url = https://github.com/nozzle-io/nozzle.git
+[submodule "sokol"]
+	path = sokol
+	url = https://github.com/floooh/sokol.git
