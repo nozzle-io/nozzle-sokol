@@ -1,5 +1,8 @@
 # nozzle-sokol
 
+> This codebase is currently in its AI-slob prototyping phase: the code runs on momentum, vibes, and plausible intent.
+> Proper debugging will be introduced once demand graduates from hypothetical to measurable.
+
 [Nozzle](https://github.com/nozzle-io/nozzle) GPU texture sharing integration for [sokol_gfx](https://github.com/floooh/sokol).
 
 Share GPU textures between processes using sokol's graphics API — no GPU vendor-specific extensions needed.
@@ -102,3 +105,8 @@ Nozzle exposes native handles via its backend headers (`nozzle/backends/metal.hp
 ## License
 
 MIT
+
+Third-party dependencies:
+
+- [nozzle](https://github.com/nozzle-io/nozzle) — MIT
+- [sokol](https://github.com/floooh/sokol) — zlib/libpng
