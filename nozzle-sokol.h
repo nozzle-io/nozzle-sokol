@@ -62,6 +62,7 @@ sg_pixel_format nozzle_sokol_to_pixel_format(int nozzle_format) {
         case NOZZLE_FORMAT_RGBA16_UNORM:  return SG_PIXELFORMAT_RGBA16;
         case NOZZLE_FORMAT_R32_UINT:      return SG_PIXELFORMAT_R32UI;
         case NOZZLE_FORMAT_RGBA32_UINT:   return SG_PIXELFORMAT_RGBA32UI;
+        case NOZZLE_FORMAT_DEPTH32_FLOAT: return SG_PIXELFORMAT_R32F;
         default:                          return SG_PIXELFORMAT_NONE;
     }
 }
