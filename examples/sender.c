@@ -33,6 +33,8 @@ static void init(void) {
     desc.name = "sokol_sender";
     desc.application_name = "nozzle-sokol-sender";
     desc.ring_buffer_size = 3;
+    desc.fallback_flags_valid = 1;
+    desc.fallback_flags = NOZZLE_FALLBACK_SAFE_DEFAULTS;
     if (nozzle_sender_create(&desc, &state.sender) != NOZZLE_OK) {
         fprintf(stderr, "failed to create nozzle sender\n");
     }
