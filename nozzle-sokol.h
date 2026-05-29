@@ -151,6 +151,7 @@ bool nozzle_sokol_image_publish(void *nozzle_sender, sg_image img) {
 
     NozzleMappedPixels mapped{};
     if (nozzle_frame_lock_writable_pixels(frame, &mapped) != NOZZLE_OK) {
+        (void)nozzle_sender_discard_frame(sender, frame);
         nozzle_frame_release(frame);
         return false;
     }
@@ -165,8 +166,7 @@ bool nozzle_sokol_image_publish(void *nozzle_sender, sg_image img) {
     }
 
     if (nozzle_frame_unlock_writable_pixels_checked(frame) != NOZZLE_OK) {
-        /* Commit rejects failed-unlock frames and releases the sender slot. */
-        (void)nozzle_sender_commit_frame(sender, frame);
+        (void)nozzle_sender_discard_frame(sender, frame);
         nozzle_frame_release(frame);
         return false;
     }
