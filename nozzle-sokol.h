@@ -164,7 +164,12 @@ bool nozzle_sokol_image_publish(void *nozzle_sender, sg_image img) {
         memcpy(mapped.data, img_data.subimage[0][0].ptr, copy_size);
     }
 
-    nozzle_frame_unlock_writable_pixels(frame);
+    if (nozzle_frame_unlock_writable_pixels_checked(frame) != NOZZLE_OK) {
+        /* Commit rejects failed-unlock frames and releases the sender slot. */
+        (void)nozzle_sender_commit_frame(sender, frame);
+        nozzle_frame_release(frame);
+        return false;
+    }
 
     if (nozzle_sender_commit_frame(sender, frame) != NOZZLE_OK) {
         nozzle_frame_release(frame);
